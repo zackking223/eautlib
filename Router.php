@@ -24,7 +24,7 @@ class Router
 
     // $currentUrl = $_SERVER['REQUEST_URI'] ?? '/'; //apache virtual host
     // if (strpos($currentUrl, '?') !== false) {
-    //     $currentUrl = substr($currentUrl, 0, strpos($currentUrl, '?'));
+    //   $currentUrl = substr($currentUrl, 0, strpos($currentUrl, '?'));
     // }
 
     $method = $_SERVER['REQUEST_METHOD'];
@@ -38,6 +38,7 @@ class Router
     if ($func) {
       call_user_func($func, $this);
     } else {
+      echo $currentUrl;
       echo "Không tìm thấy trang";
     }
   }

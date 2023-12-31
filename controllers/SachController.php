@@ -27,8 +27,8 @@ class SachController
   {
     $search = [
       'name' => $_GET['name'] ?? '',
-      'author' => (int)$_GET['author'] ?? '',
-      'genre' => (int)$_GET['genre'] ?? ''
+      'author' => $_GET['author'] ?? '',
+      'genre' => $_GET['genre'] ?? ''
     ];
     $books = Sach::get($search);
     $router->renderView('books/trangchu', [
