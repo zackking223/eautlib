@@ -1,0 +1,15 @@
+{
+    "name": "quan/btl",
+    "autoload": {
+        "psr-4": {
+            "myapp\\" : ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Codenoob223",
+            "email": "vuongdepzai1262003@gmail.com"
+        }
+    ],
+    "require": {}
+}
