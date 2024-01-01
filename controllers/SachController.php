@@ -17,9 +17,14 @@ class SachController
       'genre' => (int)$_GET['genre'] ?? ''
     ];
     $books = Sach::get($search);
+    $genres = Theloai::get();
+    $authors = Tacgia::get();
+
     $router->renderAdminPanel('admin/books/trangchu', [
       'search' => $search,
-      'books' => $books
+      'books' => $books,
+      'genres' => $genres,
+      'authors' => $authors
     ]);
   }
 

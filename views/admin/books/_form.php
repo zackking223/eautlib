@@ -3,7 +3,7 @@
     <?php if ($book["ANHSACH"]) : ?>
       <img src="<?php echo $book["ANHSACH"] ?>" alt="<?php echo $book["TENSACH"] ?>" style="max-width: 500px; width: 100%">
     <?php endif; ?>
-    
+
     <div class="uk-margin">
       <label class="uk-form-label" for="imageFile">Ảnh sách</label>
       <div class="uk-form-controls">
@@ -30,7 +30,11 @@
       <div class="uk-form-controls">
         <select class="uk-select" name="MATACGIA" value="<?php echo $book["MATACGIA"] ?>">
           <?php foreach ($authors as $author) : ?>
-            <option value="<?php echo $author["MATACGIA"] ?>"><?php echo $author["BUTDANH"] ?></option>
+            <?php if ($author["MATACGIA"] === $book["MATACGIA"]) : ?>
+              <option value="<?php echo $author["MATACGIA"] ?>" selected><?php echo $author["BUTDANH"] ?></option>
+            <?php else : ?>
+              <option value="<?php echo $author["MATACGIA"] ?>"><?php echo $author["BUTDANH"] ?></option>
+            <?php endif; ?>
           <?php endforeach; ?>
         </select>
       </div>
@@ -41,7 +45,11 @@
       <div class="uk-form-controls">
         <select class="uk-select" name="MATHELOAI" value="<?php echo $book["MATHELOAI"] ?>">
           <?php foreach ($genres as $genre) : ?>
-            <option value="<?php echo $genre["MATHELOAI"] ?>"><?php echo $genre["TEN"] ?></option>
+            <?php if ($genre["MATHELOAI"] === $book["MATHELOAI"]) : ?>
+              <option value="<?php echo $genre["MATHELOAI"] ?>" selected><?php echo $genre["TEN"] ?></option>
+            <?php else : ?>
+              <option value="<?php echo $genre["MATHELOAI"] ?>"><?php echo $genre["TEN"] ?></option>
+            <?php endif; ?>
           <?php endforeach; ?>
         </select>
       </div>

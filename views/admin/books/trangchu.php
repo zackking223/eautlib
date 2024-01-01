@@ -1,14 +1,42 @@
 <?php $headTitle = 'Quản trị sách' ?>
 <h2>DANH SÁCH SÁCH</h2>
 
-<section class="uk-flex">
-  <form class="uk-search uk-search-default uk-margin-auto-right">
-    <a href="" uk-search-icon></a>
-    <input class="uk-search-input" type="search" name="name" placeholder="Tìm sách" value="<?php echo $search["name"] ?>" aria-label="Search">
+<section class="uk-flex" style="align-items: center;">
+  <form class="uk-flex uk-margin-auto-right" style="align-items: center;">
+    <div class="uk-width-1-2 uk-margin-right">
+      <input class="uk-input" type="search" name="name" placeholder="Tên sách" value="<?php echo $search["name"] ?>" aria-label="Search">
+      <select class="uk-select" name="author" value="<?php echo $search["author"] ?>">
+        <option value="">Chọn tác giả</option>
+        <?php foreach ($authors as $author) : ?>
+          <?php if ($author["MATACGIA"] === $search["author"]) : ?>
+            <option value="<?php echo $author["MATACGIA"] ?>" selected><?php echo $author["BUTDANH"] ?></option>
+          <?php else : ?>
+            <option value="<?php echo $author["MATACGIA"] ?>"><?php echo $author["BUTDANH"] ?></option>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </select>
+      <select class="uk-select" name="genre" value="<?php echo $search["genre"] ?>">
+        <option value="">Chọn thể loại</option>
+        <?php foreach ($genres as $genre) : ?>
+          <?php if ($genre["MATHELOAI"] === $search["genre"]) : ?>
+            <option value="<?php echo $genre["MATHELOAI"] ?>" selected><?php echo $genre["TEN"] ?></option>
+          <?php else : ?>
+            <option value="<?php echo $genre["MATHELOAI"] ?>"><?php echo $genre["TEN"] ?></option>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </select>
+    </div>
+    <input type="submit" value="Lọc" class="uk-button uk-button-secondary">
   </form>
   <a href="/admin/books/create" class="uk-button uk-button-primary">Thêm mới</a>
 </section>
 <br>
+<?php $individual = 0;
+$total = 0 ?>
+<section class="uk-flex" style="gap: 12px">
+  <div id="books">Sách: 0</div>
+  <div id="total">Tổng sách: 0</div>
+</section>
 <div class="uk-overflow-auto">
   <table class="uk-table uk-table-striped">
     <thead>
@@ -28,6 +56,10 @@
     </thead>
     <tbody>
       <?php foreach ($books as $i => $book) : ?>
+        <?php
+        $individual += 1;
+        $total += $book["SOLUONG"];
+        ?>
         <tr>
           <td>
             <?php echo $book["MASACH"] ?>
@@ -73,3 +105,8 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  document.getElementById("books").textContent = "Sách: " + "<?php echo json_encode($individual)?>";
+  document.getElementById("total").textContent = "Tổng sách: " + "<?php echo json_encode($total) ?>";
+</script>
