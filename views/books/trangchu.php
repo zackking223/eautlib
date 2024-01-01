@@ -1,5 +1,8 @@
 <?php $headTitle = "Thư viện trường Đại học Công nghệ Đông Á"; ?>
 
+<?php if (isset($search["name"])) : ?>
+  <h3 style="width: max-content; margin: 24px auto;">Kết quả tìm kiếm cho "<?php echo $search["name"] ?>"</h3>
+<?php endif; ?>
 <div class="uk-grid-small uk-child-width-1-6@xl uk-child-width-1-5@l uk-child-width-1-3@m uk-child-width-1-2@s uk-padding-small" uk-grid>
   <?php foreach ($books as $book) : ?>
     <div>
