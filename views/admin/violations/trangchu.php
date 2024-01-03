@@ -12,6 +12,7 @@
     <a href="/admin/violations/create" class="uk-button uk-button-primary">Thêm mới</a>
 </div>
 <br>
+<section id="total"><?php $total = 0; ?></section>
 <div class="uk-overflow-auto">
     <table class="uk-table uk-table-striped">
         <thead>
@@ -26,6 +27,7 @@
         </thead>
         <tbody>
             <?php foreach ($violations as $i => $violation) : ?>
+                <?php $total++; ?>
                 <tr>
                     <td>
                         <?php echo $violation["MAVIPHAM"] ?>
@@ -56,3 +58,9 @@
         </tbody>
     </table>
 </div>
+
+<?php if ($total > 0) : ?>
+    <script>
+        document.getElementById("total").textContent = "Tổng cộng: " + "<?php echo json_encode($total) ?>";
+    </script>
+<?php endif; ?>

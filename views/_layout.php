@@ -61,23 +61,23 @@
             <ul class="uk-nav uk-dropdown-nav uk-section uk-section-secondary">
               <li class="uk-nav-header uk-text-primary uk-text-bold">Chuyên ngành</li>
               <li class="uk-nav-divider"></li>
-              <li><a href="#">HTTT</a></li>
-              <li><a href="#">CNPM</a></li>
-              <li><a href="#">QTKD</a></li>
-              <li><a href="#">KTĐT</a></li>
+              <li><a href="/?genre=9">HTTT</a></li>
+              <li><a href="/?genre=10">CNPM</a></li>
+              <li><a href="/?genre=11">QTKD</a></li>
+              <li><a href="/?genre=12">KTĐT</a></li>
               <li class="uk-nav-header uk-text-primary uk-text-bold">Phổ biến</li>
               <li class="uk-nav-divider"></li>
-              <li><a href="#">Tình cảm</a></li>
-              <li><a href="#">Bí ẩn</a></li>
-              <li><a href="#">Kinh dị</a></li>
-              <li><a href="#">Lịch sử</a></li>
-              <li><a href="#">Khoa học</a></li>
+              <li><a href="/?genre=2">Tình cảm</a></li>
+              <li><a href="/?genre=13">Bí ẩn</a></li>
+              <li><a href="/?genre=1">Kinh dị</a></li>
+              <li><a href="/?genre=14">Lịch sử</a></li>
+              <li><a href="/?genre=15">Khoa học</a></li>
               <li class="uk-nav-header uk-text-primary uk-text-bold">Truyện tranh</li>
               <li class="uk-nav-divider"></li>
-              <li><a href="#">Manga</a></li>
-              <li><a href="#">Manhua</a></li>
-              <li><a href="#">Manhwa</a></li>
-              <li><a href="#">Comic</a></li>
+              <li><a href="/?genre=16">Manga</a></li>
+              <li><a href="/?genre=17">Manhua</a></li>
+              <li><a href="/?genre=18">Manhwa</a></li>
+              <li><a href="/?genre=19">Comic</a></li>
             </ul>
           </div>
         </section>
@@ -88,14 +88,14 @@
             <ul class="uk-nav uk-dropdown-nav uk-section uk-section-secondary">
               <li class="uk-nav-header uk-text-primary uk-text-bold">Nhà văn</li>
               <li class="uk-nav-divider"></li>
-              <li><a href="#">Tô Hoài</a></li>
-              <li><a href="#">Kim Lân</a></li>
-              <li><a href="#">Xuân Diệu</a></li>
-              <li><a href="#">Đăng Khoa</a></li>
+              <li><a href="/?author=1">Tô Hoài</a></li>
+              <li><a href="/?author=2">Kim Lân</a></li>
+              <li><a href="/?author=8">Xuân Diệu</a></li>
+              <li><a href="/?author=6">Đăng Khoa</a></li>
               <li class="uk-nav-header uk-text-primary uk-text-bold">Giáo sư</li>
               <li class="uk-nav-divider"></li>
-              <li><a href="#">Lân Dũng</a></li>
-              <li><a href="#">Văn Thọ</a></li>
+              <li><a href="/?author=9">Lân Dũng</a></li>
+              <li><a href="/?author=10">Văn Thọ</a></li>
             </ul>
           </div>
         </section>
@@ -140,10 +140,10 @@
                 <a class="uk-accordion-title" href>Chuyên ngành</a>
                 <div class="uk-accordion-content">
                   <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">HTTT</a></li>
-                    <li><a href="#">CNPM</a></li>
-                    <li><a href="#">QTKD</a></li>
-                    <li><a href="#">KTĐT</a></li>
+                    <li><a href="/?genre=9">HTTT</a></li>
+                    <li><a href="/?genre=10">CNPM</a></li>
+                    <li><a href="/?genre=11">QTKD</a></li>
+                    <li><a href="/?genre=12">KTĐT</a></li>
                   </ul>
                 </div>
               </li>
@@ -151,11 +151,11 @@
                 <a class="uk-accordion-title" href>Phổ biến</a>
                 <div class="uk-accordion-content">
                   <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Tình cảm</a></li>
-                    <li><a href="#">Bí ẩn</a></li>
-                    <li><a href="#">Kinh dị</a></li>
-                    <li><a href="#">Lịch sử</a></li>
-                    <li><a href="#">Khoa học</a></li>
+                    <li><a href="/?genre=2">Tình cảm</a></li>
+                    <li><a href="/?genre=13">Bí ẩn</a></li>
+                    <li><a href="/?genre=1">Kinh dị</a></li>
+                    <li><a href="/?genre=14">Lịch sử</a></li>
+                    <li><a href="/?genre=15">Khoa học</a></li>
                   </ul>
                 </div>
               </li>
@@ -163,10 +163,10 @@
                 <a class="uk-accordion-title" href>Truyện tranh</a>
                 <div class="uk-accordion-content">
                   <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Manga</a></li>
-                    <li><a href="#">Manhua</a></li>
-                    <li><a href="#">Manhwa</a></li>
-                    <li><a href="#">Comic</a></li>
+                    <li><a href="/?genre=16">Manga</a></li>
+                    <li><a href="/?genre=17">Manhua</a></li>
+                    <li><a href="/?genre=18">Manhwa</a></li>
+                    <li><a href="/?genre=19">Comic</a></li>
                   </ul>
                 </div>
               </li>
@@ -174,10 +174,10 @@
                 <a class="uk-accordion-title" href>Nhà văn</a>
                 <div class="uk-accordion-content">
                   <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Tô Hoài</a></li>
-                    <li><a href="#">Kim Lân</a></li>
-                    <li><a href="#">Xuân Diệu</a></li>
-                    <li><a href="#">Đăng Khoa</a></li>
+                    <li><a href="/?author=1">Tô Hoài</a></li>
+                    <li><a href="/?author=2">Kim Lân</a></li>
+                    <li><a href="/?author=8">Xuân Diệu</a></li>
+                    <li><a href="/?author=6">Đăng Khoa</a></li>
                   </ul>
                 </div>
               </li>
@@ -185,8 +185,8 @@
                 <a class="uk-accordion-title" href>Giáo sư</a>
                 <div class="uk-accordion-content">
                   <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Lân Dũng</a></li>
-                    <li><a href="#">Văn Thọ</a></li>
+                    <li><a href="/?author=9">Lân Dũng</a></li>
+                    <li><a href="/?author=10">Văn Thọ</a></li>
                   </ul>
                 </div>
               </li>
