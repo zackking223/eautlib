@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2023 at 11:42 AM
+-- Generation Time: Dec 31, 2023 at 05:15 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -30,10 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `MAADMIN` int(11) NOT NULL,
   `MATKHAU` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
-  `ROLE` varchar(30) COLLATE utf32_unicode_ci NOT NULL COMMENT 'QUAN_TRI || THU_THU',
+  `ROLE` varchar(30) COLLATE utf32_unicode_ci NOT NULL DEFAULT 'THU_THU',
   `USERNAME` varchar(50) COLLATE utf32_unicode_ci NOT NULL,
   `NGAYTHEM` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`MAADMIN`, `MATKHAU`, `ROLE`, `USERNAME`, `NGAYTHEM`) VALUES
+(1, '$argon2id$v=19$m=65536,t=4,p=1$Ri5OWTRTdzdSRXR5d3VSZg$y+Yyc9VrKKA2cMccr3x6ByS7BGQ/axB7q3FAXoHDGZY', 'QUAN_TRI', 'Admin123', '2023-12-28'),
+(2, '$argon2id$v=19$m=65536,t=4,p=1$Ri5OWTRTdzdSRXR5d3VSZg$y+Yyc9VrKKA2cMccr3x6ByS7BGQ/axB7q3FAXoHDGZY', 'THU_THU', 'TuanMinh', '2023-12-29'),
+(3, '$argon2id$v=19$m=65536,t=4,p=1$Ri5OWTRTdzdSRXR5d3VSZg$y+Yyc9VrKKA2cMccr3x6ByS7BGQ/axB7q3FAXoHDGZY', 'THU_THU', 'VanThi', '2023-12-29');
 
 -- --------------------------------------------------------
 
@@ -46,9 +55,17 @@ CREATE TABLE `bandoc` (
   `HOTEN` varchar(50) COLLATE utf32_unicode_ci NOT NULL,
   `NGAYSINH` date NOT NULL,
   `DIACHI` varchar(100) COLLATE utf32_unicode_ci NOT NULL,
-  `SDT` int(10) NOT NULL,
+  `SDT` varchar(10) COLLATE utf32_unicode_ci NOT NULL,
   `NGAYTHEM` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `bandoc`
+--
+
+INSERT INTO `bandoc` (`MABANDOC`, `HOTEN`, `NGAYSINH`, `DIACHI`, `SDT`, `NGAYTHEM`) VALUES
+(1, 'Nguyễn Văn Bộ', '2003-05-23', 'Việt Nam, Vĩnh Phúc', '0915711868', '2023-12-29'),
+(2, 'Vương Minh Quân', '2003-06-12', 'Đống Đa, Hà Nội', '0813344815', '2023-12-29');
 
 -- --------------------------------------------------------
 
@@ -60,6 +77,7 @@ CREATE TABLE `sach` (
   `MASACH` int(11) NOT NULL,
   `MATHELOAI` int(11) NOT NULL,
   `MATACGIA` int(11) NOT NULL,
+  `TENSACH` varchar(100) COLLATE utf32_unicode_ci NOT NULL,
   `SOLUONG` int(11) NOT NULL,
   `VITRI` varchar(100) COLLATE utf32_unicode_ci NOT NULL,
   `TOMTAT` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
@@ -67,6 +85,15 @@ CREATE TABLE `sach` (
   `NGAYTHEM` date NOT NULL DEFAULT current_timestamp(),
   `NGAYCAPNHAT` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `sach`
+--
+
+INSERT INTO `sach` (`MASACH`, `MATHELOAI`, `MATACGIA`, `TENSACH`, `SOLUONG`, `VITRI`, `TOMTAT`, `ANHSACH`, `NGAYTHEM`, `NGAYCAPNHAT`) VALUES
+(1, 1, 2, 'Anh chàng hiệp sĩ gỗ', 98, 'Dãy truyện cổ tích', 'Ở thị trấn Bến Cam, mỗi năm cứ đến ngày gần Tết người ta lại thấy ông lão già ấy. Không ai biết quê quán ông lão ở đâu, họ tên ông lão là gì. Nhưng mỗi năm vào dịp Tết người ta lại thấy ông lão đẩy cái xe bánh gỗ lọc khọc đến, ăn mấy phiên chợ Tết...', '/public/uploads/GIwtQ5pP/anh-chang-hiep-si-go.jpg', '2023-12-28', '2023-12-29'),
+(2, 1, 2, 'Làng', 99, 'Dãy A', 'Truyện kể về ông Hai rất yêu làng, yêu nước. Ông Hai phải đi tản cư nên ông rất nhớ làng và yêu làng, ông thường tự hào và khoe về làng Chợ Dầu giàu đẹp của mình, nhất là tinh thần kháng chiến và chính ông là một công dân tích cực.', '/public/uploads/4PkBtOFp/lang.jpg', '2023-12-28', '2023-12-29'),
+(3, 3, 1, 'Chí Phèo', 10, 'Dãy A', 'Chí Phèo là cuốn sách của tác giả Nam Cao, mô tả hình ảnh thực tế đời sống nông thôn Việt Nam trước năm 1945, với sự thiếu vắng chất đầu tư, sự nghèo đói và tàn tệ trên con đường phá sản, bần cùng...', '/public/uploads/4PJQdChi/chipheo.jpg', '2023-12-29', '2023-12-29');
 
 -- --------------------------------------------------------
 
@@ -80,6 +107,14 @@ CREATE TABLE `sach_themuontra` (
   `NGAYTHEM` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
+--
+-- Dumping data for table `sach_themuontra`
+--
+
+INSERT INTO `sach_themuontra` (`MASACH`, `MATHEMUON`, `NGAYTHEM`) VALUES
+(1, 1, '2023-12-29'),
+(2, 1, '2023-12-31');
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +127,18 @@ CREATE TABLE `tacgia` (
   `NGAYTHEM` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
+--
+-- Dumping data for table `tacgia`
+--
+
+INSERT INTO `tacgia` (`MATACGIA`, `BUTDANH`, `NGAYTHEM`) VALUES
+(1, 'Tô Hoài', '2023-12-28'),
+(2, 'Kim Lân', '2023-12-28'),
+(4, 'Nguyễn Đình Thi', '2023-12-29'),
+(5, 'Hàn Mạc Tử', '2023-12-29'),
+(6, 'Nguyễn Đăng Khoa', '2023-12-29'),
+(7, 'Nam Cao', '2023-12-29');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +149,19 @@ CREATE TABLE `theloai` (
   `MATHELOAI` int(11) NOT NULL,
   `TEN` varchar(50) COLLATE utf32_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `theloai`
+--
+
+INSERT INTO `theloai` (`MATHELOAI`, `TEN`) VALUES
+(4, 'Cổ tích'),
+(5, 'Dân gian'),
+(1, 'Kinh dị'),
+(8, 'Tiểu thuyết'),
+(2, 'Tình cảm'),
+(3, 'Truyện ngắn'),
+(6, 'Truyện thơ');
 
 -- --------------------------------------------------------
 
@@ -116,8 +176,16 @@ CREATE TABLE `themuontra` (
   `NGAYMUON` date NOT NULL DEFAULT current_timestamp(),
   `NGAYTRA` date NOT NULL DEFAULT current_timestamp(),
   `TINHTRANG` varchar(50) COLLATE utf32_unicode_ci NOT NULL,
-  `NGAYCAPNHAT` date NOT NULL DEFAULT current_timestamp()
+  `NGAYCAPNHAT` date NOT NULL DEFAULT current_timestamp(),
+  `NGAYTHEM` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `themuontra`
+--
+
+INSERT INTO `themuontra` (`MATHEMUON`, `MABANDOC`, `MAADMIN`, `NGAYMUON`, `NGAYTRA`, `TINHTRANG`, `NGAYCAPNHAT`, `NGAYTHEM`) VALUES
+(1, 1, 3, '2023-12-29', '2023-12-29', 'Chưa trả', '2023-12-31', '2023-12-29');
 
 -- --------------------------------------------------------
 
@@ -129,9 +197,17 @@ CREATE TABLE `vipham` (
   `MAVIPHAM` int(11) NOT NULL,
   `MABANDOC` int(11) NOT NULL,
   `MAADMIN` int(11) NOT NULL,
-  `NOIDUNG` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
+  `NOIDUNG` text COLLATE utf32_unicode_ci NOT NULL,
   `NGAYTHEM` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `vipham`
+--
+
+INSERT INTO `vipham` (`MAVIPHAM`, `MABANDOC`, `MAADMIN`, `NOIDUNG`, `NGAYTHEM`) VALUES
+(1, 1, 2, 'Làm hỏng sách (mã 01)', '2023-12-29'),
+(2, 1, 3, 'Làm mất sách (mã 01)', '2023-12-29');
 
 --
 -- Indexes for dumped tables
@@ -141,7 +217,8 @@ CREATE TABLE `vipham` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`MAADMIN`);
+  ADD PRIMARY KEY (`MAADMIN`),
+  ADD UNIQUE KEY `USERNAME` (`USERNAME`);
 
 --
 -- Indexes for table `bandoc`
@@ -174,7 +251,8 @@ ALTER TABLE `tacgia`
 -- Indexes for table `theloai`
 --
 ALTER TABLE `theloai`
-  ADD PRIMARY KEY (`MATHELOAI`);
+  ADD PRIMARY KEY (`MATHELOAI`),
+  ADD UNIQUE KEY `TEN` (`TEN`);
 
 --
 -- Indexes for table `themuontra`
@@ -200,43 +278,43 @@ ALTER TABLE `vipham`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `MAADMIN` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MAADMIN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `bandoc`
 --
 ALTER TABLE `bandoc`
-  MODIFY `MABANDOC` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MABANDOC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sach`
 --
 ALTER TABLE `sach`
-  MODIFY `MASACH` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MASACH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tacgia`
 --
 ALTER TABLE `tacgia`
-  MODIFY `MATACGIA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MATACGIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `theloai`
 --
 ALTER TABLE `theloai`
-  MODIFY `MATHELOAI` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MATHELOAI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `themuontra`
 --
 ALTER TABLE `themuontra`
-  MODIFY `MATHEMUON` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MATHEMUON` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `vipham`
 --
 ALTER TABLE `vipham`
-  MODIFY `MAVIPHAM` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MAVIPHAM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
