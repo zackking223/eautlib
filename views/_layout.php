@@ -5,27 +5,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title><?php echo $headTitle ?></title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" href="/public/eaut_logo.png" sizes="16x16" />
-  <!-- UIkit CSS -->
-  <link rel="stylesheet" href="/css/uikit.min.css" />
-
-  <style>
-    @media screen and (max-width: 1000px) {
-      .uk-flex {
-        flex-direction: column !important;
-        gap: 16px;
-      }
-    }
-  </style>
-  <!-- UIkit JS -->
-  <script src="/js/uikit.min.js"></script>
-  <script src="/js/uikit-icons.min.js"></script>
-</head>
+<?php include "../includes/head.php" ?>
 
 <body>
   <?php if (isset($_SESSION["auth"])) : ?>
