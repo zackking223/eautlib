@@ -79,9 +79,10 @@ class Themuon
   public static function get($search)
   {
     $queryStr = "SELECT themuontra.`MATHEMUON`, themuontra.`NGAYTHEM`, themuontra.NGAYMUON, themuontra.NGAYTRA, themuontra.TINHTRANG, themuontra.NGAYCAPNHAT, admin.MAADMIN, bandoc.MABANDOC, admin.USERNAME, bandoc.HOTEN FROM `themuontra` INNER JOIN admin ON admin.MAADMIN = themuontra.MAADMIN INNER JOIN bandoc ON bandoc.MABANDOC = themuontra.MABANDOC WHERE 1";
-    if ($search["cardid"]) $queryStr = $queryStr . "AND themuontra.MATHEMUON = " . $search["cardid"];
-    if ($search["hoten"]) $queryStr = $queryStr . "AND bandoc.HOTEN LIKE " . "'%" . $search["hoten"] . "%'";
-    if ($search["username"]) $queryStr = $queryStr . "AND admin.USERNAME LIKE " . "'%" . $search["username"] . "%'";
+    if ($search["cardid"]) $queryStr = $queryStr . " AND themuontra.MATHEMUON = " . $search["cardid"];
+    if ($search["hoten"]) $queryStr = $queryStr . " AND bandoc.HOTEN LIKE " . "'%" . $search["hoten"] . "%'";
+    if ($search["username"]) $queryStr = $queryStr . " AND admin.USERNAME LIKE " . "'%" . $search["username"] . "%'";
+    if ($search["tinhtrang"]) $queryStr = $queryStr . " AND themuontra.TINHTRANG LIKE " . "'%" . $search["tinhtrang"] . "%'";
 
     $statement = Database::$pdo->prepare($queryStr);
 

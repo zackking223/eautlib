@@ -12,9 +12,13 @@ use myapp\Router;
 use myapp\controllers\SachController;
 use myapp\controllers\TacgiaController;
 use myapp\controllers\TheloaiController;
+use myapp\controllers\ThongKeController;
 use myapp\controllers\ViphamController;
 use myapp\database\Database;
 
+ini_set('display_errors', '0');
+ini_set('display_startup_errors', '0');
+error_reporting(E_ALL);
 Database::init();
 $router = new Router();
 // $apacheUrl = '/eautlib/src'; //WHEN USE APACHE VIRTUAL HOST, MAKE EMPTY IF USE php -S
@@ -89,5 +93,8 @@ $router->post($apacheUrl . '/admin/borrows/removebook', [MuonTraController::clas
 $router->get($apacheUrl . '/api/book', [SachAPI::class, 'getById']);
 $router->post($apacheUrl . '/api/book/borrow', [SachAPI::class, 'addBookToCard']);
 $router->post($apacheUrl . '/api/book/return', [SachAPI::class, 'removeBookFromCard']);
+
+$router->get($apacheUrl . '/admin/analytics', [ThongKeController::class, 'index']);
+$router->get($apacheUrl . '/admin/analytics/', [ThongKeController::class, 'index']);
 
 $router->resolve();

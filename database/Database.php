@@ -17,6 +17,12 @@ class Database
     }
   }
 
+  public static function query(string $queryStr) {
+    $result = self::$pdo->query($queryStr);
+
+    return $result;
+  }
+
   public static function close() {
     self::$pdo->close();
   }

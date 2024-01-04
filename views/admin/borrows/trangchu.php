@@ -6,6 +6,21 @@
             <input class="uk-input" type="number" name="cardid" placeholder="Mã thẻ mượn" value="<?php echo $search["cardid"] ?>" aria-label="Search">
             <input class="uk-input" type="search" name="username" placeholder="Tên thủ thư" value="<?php echo $search["username"] ?>" aria-label="Search">
             <input class="uk-input" type="search" name="hoten" placeholder="Tên bạn đọc" value="<?php echo $search["hoten"] ?>" aria-label="Search">
+            <?php $stats = array("Chưa trả", "Quá hạn", "Đã trả") ?>
+            <select class="uk-select" name="tinhtrang" value="<?php echo $search["tinhtrang"] ?>">
+                <option value="">Chọn tình trạng</option>
+                <?php foreach ($stats as $stat) : ?>
+                    <?php if ($search["tinhtrang"] === $stat) : ?>
+                        <option value="<?php echo $stat ?>" selected>
+                            <?php echo $stat ?>
+                        </option>
+                    <?php else : ?>
+                        <option value="<?php echo $stat ?>">
+                            <?php echo $stat ?>
+                        </option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </select>
         </div>
         <input type="submit" value="Lọc" class="uk-button uk-button-secondary">
     </form>
@@ -17,6 +32,7 @@
     <input type="submit" class="uk-button uk-button-danger" value="Trả">
 </form>
 <br>
+<section id="total"></section>
 <div class="uk-overflow-auto">
     <table class="uk-table uk-table-striped">
         <thead>
@@ -34,7 +50,9 @@
             </tr>
         </thead>
         <tbody>
+            <?php $total = 0; ?>
             <?php foreach ($cards as $i => $card) : ?>
+                <?php $total++; ?>
                 <tr>
                     <td>
                         <?php echo $card["MATHEMUON"] ?>
@@ -81,3 +99,8 @@
         </tbody>
     </table>
 </div>
+
+
+<script>
+    document.getElementById("total").textContent = "Tổng: " + "<?php echo json_encode($total); ?>";
+</script>

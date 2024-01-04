@@ -79,6 +79,7 @@ $roles = [
               <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: ban"></span><a href="/admin/violations/">Vi phạm</a></li>
               <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: forward"></span><a href="/admin/borrows">Mượn trả</a></li>
               <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: lock"></span><a href="/admin/accounts">Tài khoản</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: thumbnails"></span><a href="/admin/analytics">Thống kê</a></li>
             </ul>
           </div>
         </div>
@@ -96,6 +97,7 @@ $roles = [
       <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: ban"></span><a href="/admin/violations/">Vi phạm</a></li>
       <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: forward"></span><a href="/admin/borrows">Mượn trả</a></li>
       <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: lock"></span><a href="/admin/accounts">Tài khoản</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: thumbnails"></span><a href="/admin/analytics">Thống kê</a></li>
     </ul>
     <div class="uk-padding-small uk-width-expand">
       <?php echo $content ?>

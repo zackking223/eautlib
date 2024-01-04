@@ -15,7 +15,8 @@ class MuonTraController
     $search = [
       'cardid' => $_GET["cardid"] ?? '',
       'username' => $_GET["username"] ?? '',
-      'hoten' => $_GET["hoten"] ?? ''
+      'hoten' => $_GET["hoten"] ?? '',
+      'tinhtrang' => $_GET["tinhtrang"] ?? ''
     ];
 
     $borrowCards = Themuon::get($search);
