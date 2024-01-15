@@ -55,7 +55,7 @@
 
         <div class="uk-margin">
             <label class="uk-form-label" for="SACHMUON[]">Sách mượn</label>
-            <section class="uk-margin-small-bottom">
+            <section class="uk-margin-small-bottom noPrint">
                 <input class="uk-input uk-form-width-medium uk-width-small uk-form-small" type="number" placeholder="Mã sách" id="themsach" aria-label="Small">
                 <button id="themsachbtn" type="button" class="uk-button uk-button-small">Thêm</button>
             </section>
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <div class="uk-margin">
+        <div class="uk-margin noPrint">
             <input class="uk-button uk-button-primary" type="submit" value="<?php echo $headTitle ?>">
             <a class="uk-button uk-button-danger" href="/admin/borrows">Quay lại</a>
         </div>

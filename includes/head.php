@@ -8,10 +8,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
 
   <style>
+    .hiddenPrint {display: none;}
+    .imagePrint {
+      max-width: 300px;
+      width: 100%;
+    }
     @media screen and (max-width: 1000px) {
       .uk-flex {
         flex-direction: column !important;
         gap: 16px;
+      }
+    }
+
+    @media print {
+      .noPrint {
+        display: none;
+      }
+      .hiddenPrint {
+        display: block;
+      }
+      .imagePrint {
+        max-width: 160px;
       }
     }
   </style>

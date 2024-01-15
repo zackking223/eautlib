@@ -91,7 +91,7 @@
           <a class="uk-button uk-button-default uk-visible@l" href="/auth/login">Đăng nhập</a>
         <?php endif; ?>
 
-        <button class="uk-button uk-text-primary uk-text-bold uk-hidden@l uk-padding-remove" type="button" uk-toggle="target: #offcanvas-overlay" uk-icon="icon: menu; ratio: 1.2"></button>
+        <button class="uk-button uk-text-primary uk-text-bold uk-hidden@l uk-padding-remove noPrint" type="button" uk-toggle="target: #offcanvas-overlay" uk-icon="icon: menu; ratio: 1.2"></button>
 
         <!-- SIDEBAR -->
         <div class="uk-hidden@l" id="offcanvas-overlay" uk-offcanvas="overlay: true; flip: true">

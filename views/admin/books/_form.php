@@ -1,10 +1,12 @@
 <form method="POST" enctype="multipart/form-data">
   <fieldset class="uk-fieldset">
     <?php if ($book["ANHSACH"]) : ?>
-      <img src="<?php echo $book["ANHSACH"] ?>" alt="<?php echo $book["TENSACH"] ?>" style="max-width: 500px; width: 100%">
+      <div class="noPrint">
+        <img src="<?php echo $book["ANHSACH"] ?>" alt="<?php echo $book["TENSACH"] ?>">
+      </div>
     <?php endif; ?>
 
-    <div class="uk-margin">
+    <div class="uk-margin noPrint">
       <label class="uk-form-label" for="imageFile">Ảnh sách</label>
       <div class="uk-form-controls">
         <input class="uk-input" name="imageFile" type="file" placeholder="Ảnh sách">
@@ -69,7 +71,7 @@
       </div>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin noPrint">
       <input class="uk-button uk-button-primary" type="submit" value="<?php echo $headTitle ?>">
       <a class="uk-button uk-button-danger" href="/admin/books">Quay lại</a>
     </div>

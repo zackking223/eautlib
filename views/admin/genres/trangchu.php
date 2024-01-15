@@ -1,10 +1,12 @@
 <?php $headTitle = 'Quản trị thể loại' ?>
 <h2>DANH SÁCH THỂ LOẠI</h2>
-<form class="uk-search uk-search-default">
-    <a href="" uk-search-icon></a>
-    <input class="uk-search-input" type="search" name="search" placeholder="Tìm thể loại" value="<?php echo $search ?>" aria-label="Search">
-</form> |
-<a href="/admin/genres/create" class="uk-button uk-button-primary">Thêm mới</a>
+<div class="uk-flex">
+    <form class="uk-search uk-search-default uk-margin-auto-right">
+        <a href="" uk-search-icon></a>
+        <input class="uk-search-input" type="search" name="search" placeholder="Tìm thể loại" value="<?php echo $search ?>" aria-label="Search">
+    </form>
+    <a href="/admin/genres/create" class="uk-button uk-button-primary">Thêm mới</a>
+</div>
 <br>
 <div class="uk-overflow-auto">
     <table class="uk-table uk-table-striped">

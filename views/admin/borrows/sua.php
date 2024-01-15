@@ -1,5 +1,9 @@
 <?php $headTitle = "Sửa thẻ" ?>
-<h2>SỬA THẺ</h2>
+<h2 class="hiddenPrint">Thẻ mượn sách</h2>
+<div class="uk-flex uk-margin-bottom noPrint" style="align-items: center;">
+  <h2 class="noPrint uk-margin-right" style="margin-bottom: 0px;">SỬA THẺ</h2>
+  <button onclick="window.print();" class="uk-button uk-button-primary uk-button-small">In <span uk-icon="file-text"></span></button>
+</div>
 <?php include_once "_form.php"; ?>
 <script>
   <?php

@@ -96,5 +96,6 @@ $router->post($apacheUrl . '/api/book/return', [SachAPI::class, 'removeBookFromC
 
 $router->get($apacheUrl . '/admin/analytics', [ThongKeController::class, 'index']);
 $router->get($apacheUrl . '/admin/analytics/', [ThongKeController::class, 'index']);
+$router->get($apacheUrl . '/admin/analytics/download', [ThongKeController::class, 'download']);
 
 $router->resolve();

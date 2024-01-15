@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="uk-margin">
+        <div class="uk-margin noPrint">
             <input class="uk-button uk-button-primary" type="submit" value="<?php echo $headTitle ?>">
             <a class="uk-button uk-button-danger" href="/admin/readers">Quay lại</a>
         </div>

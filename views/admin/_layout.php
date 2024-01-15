@@ -27,7 +27,7 @@ $roles = [
     </script>
   <?php endif; ?>
   <?php if (isset($_SESSION["auth"])) : ?>
-    <div class="uk-section uk-section-secondary uk-padding-small">
+    <div class="uk-section uk-section-secondary uk-padding-small noPrint">
       <p class="uk-align-center uk-text-primary uk-text-center">
         User: <?php echo $_SESSION["username"] ?>. Vai trò: <?php echo $roles[$_SESSION["role"]] ?>
       </p>
@@ -55,7 +55,7 @@ $roles = [
           <a class="uk-button uk-button-default uk-visible@l" href="/auth/login">Đăng nhập</a>
         <?php endif; ?>
 
-        <button class="uk-button uk-text-primary uk-text-bold uk-hidden@l uk-padding-remove" type="button" uk-toggle="target: #offcanvas-overlay" uk-icon="icon: menu; ratio: 1.2"></button>
+        <button class="uk-button uk-text-primary uk-text-bold uk-hidden@l uk-padding-remove noPrint" type="button" uk-toggle="target: #offcanvas-overlay" uk-icon="icon: menu; ratio: 1.2"></button>
 
         <!-- SIDEBAR -->
         <div class="uk-hidden@l" id="offcanvas-overlay" uk-offcanvas="overlay: true; flip: true">
