@@ -30,6 +30,10 @@ class Admin
       $errors[] = "Mật khẩu không được bỏ trống!";
     }
 
+    if (strlen($this->MATKHAU) < 8) {
+      $errors[] = "Mật khẩu tối thiểu 8 ký tự!";
+    }
+
     if (!$this->ROLE) {
       $errors[] = "Vai trò không được bỏ trống!";
     }

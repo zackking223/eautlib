@@ -35,6 +35,7 @@ $router->get($apacheUrl . '/admin', [SachController::class, 'index']);
 $router->get($apacheUrl . '/admin/accounts', [AccountController::class, 'index']);
 $router->get($apacheUrl . '/admin/accounts/', [AccountController::class, 'index']);
 $router->get($apacheUrl . '/admin/accounts/create', [AccountController::class, 'create']);
+$router->post($apacheUrl . '/admin/accounts/create', [AccountController::class, 'create']);
 $router->get($apacheUrl . '/admin/accounts/update', [AccountController::class, 'update']);
 $router->get($apacheUrl . '/admin/accounts/delete', [AccountController::class, 'delete']);
 $router->get($apacheUrl . '/admin/accounts/changepassword', [AccountController::class, 'changePass']);
