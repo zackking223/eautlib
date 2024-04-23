@@ -29,7 +29,7 @@
             <?php echo $account["MAADMIN"] ?>
           </td>
           <td>
-            <?php echo $account["ROLE"] ?>
+            <?php if ($account["ROLE"] == "QUAN_TRI") {echo "Quản trị";} else {echo "Thủ thư";} ?>
           </td>
           <td>
             <?php echo $account["USERNAME"] ?>

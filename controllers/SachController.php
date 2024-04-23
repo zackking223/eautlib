@@ -12,7 +12,7 @@ class SachController
   public static function index(Router $router)
   {
     $search = [
-      'name' => $_GET['name'] ?? '',
+      'name' => trim($_GET['name'] ?? ''),
       'author' => (int)$_GET['author'] ?? '',
       'genre' => (int)$_GET['genre'] ?? ''
     ];
@@ -31,7 +31,7 @@ class SachController
   public static function guestView(Router $router)
   {
     $search = [
-      'name' => $_GET['name'] ?? '',
+      'name' => trim($_GET['name']) ?? '',
       'author' => $_GET['author'] ?? '',
       'genre' => $_GET['genre'] ?? ''
     ];
@@ -73,14 +73,14 @@ class SachController
       $sachData['MATHELOAI'] = $_POST['MATHELOAI'];
       $sachData['MATACGIA'] = $_POST['MATACGIA'];
       $sachData['SOLUONG'] = (int)$_POST['SOLUONG'];
-      $sachData['VITRI'] = $_POST['VITRI'];
-      $sachData['TOMTAT'] = $_POST['TOMTAT'];
-      $sachData['VITRI'] = $_POST['VITRI'];
-      $sachData['TENSACH'] = $_POST['TENSACH'];
+      $sachData['VITRI'] = trim($_POST['VITRI']);
+      $sachData['TOMTAT'] = trim($_POST['TOMTAT']);
+      $sachData['VITRI'] = trim($_POST['VITRI']);
+      $sachData['TENSACH'] = trim($_POST['TENSACH']);
 
       $sach = new Sach();
       $sach->load($sachData);
-      $errors = $sach->save();
+      $errors = $sach->save("create");
 
       if (empty($errors)) {
         header("location: /admin/books");
@@ -111,14 +111,14 @@ class SachController
       $sachData['MATHELOAI'] = $_POST['MATHELOAI'];
       $sachData['MATACGIA'] = $_POST['MATACGIA'];
       $sachData['SOLUONG'] = (int)$_POST['SOLUONG'];
-      $sachData['VITRI'] = $_POST['VITRI'];
-      $sachData['TOMTAT'] = $_POST['TOMTAT'];
-      $sachData['VITRI'] = $_POST['VITRI'];
-      $sachData['TENSACH'] = $_POST['TENSACH'];
+      $sachData['VITRI'] = trim($_POST['VITRI']);
+      $sachData['TOMTAT'] = trim($_POST['TOMTAT']);
+      $sachData['VITRI'] = trim($_POST['VITRI']);
+      $sachData['TENSACH'] = trim($_POST['TENSACH']);
 
       $sach = new Sach();
       $sach->load($sachData);
-      $errors = $sach->save();
+      $errors = $sach->save("update");
 
       if (empty($errors)) {
         header("location: /admin/books");
@@ -136,11 +136,13 @@ class SachController
     ]);
   }
 
-  public function delete(Router $router)
+  public static function delete(Router $router)
   {
     $id = $_POST['MASACH'] ?? null;
+
     if ($id) {
-      Sach::delete($id);
+      $sachData = Sach::getById($id);
+      Sach::delete($id, $sachData["ANHSACH"]);
     }
     header('location: /admin/books');
     exit;

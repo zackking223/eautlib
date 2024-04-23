@@ -22,7 +22,7 @@ class Themuon
     $this->MABANDOC = (int) $data["MABANDOC"] ?? null;
     $this->MAADMIN = (int) $data["MAADMIN"] ?? null;
     $this->NGAYMUON = $data["NGAYMUON"];
-    $this->NGAYTRA = $data["NGAYMUON"];
+    $this->NGAYTRA = $data["NGAYTRA"];
     $this->TINHTRANG = $data["TINHTRANG"];
     $this->NGAYCAPNHAT = $data["NGAYCAPNHAT"] ?? '';
     $this->SACHMUON = $data["SACHMUON"] ?? [];
@@ -46,6 +46,10 @@ class Themuon
 
     if (!$this->NGAYTRA) {
       $errors[] = "Ngày trả không được bỏ trống";
+    }
+
+    if (strtotime($this->NGAYTRA) <= strtotime($this->NGAYMUON)) {
+      $errors[] = "Ngày mượn không được lớn hơn hoặc bằng ngày trả";
     }
 
     if (!$this->TINHTRANG) {

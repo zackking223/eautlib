@@ -25,13 +25,13 @@
               <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                   <span class="uk-form-icon" uk-icon="icon: user"></span>
-                  <input class="uk-input uk-form-large" type="text" name="USERNAME" placeholder="username" value="<?php if ($_POST) echo $_POST["USERNAME"] ?>">
+                  <input class="uk-input uk-form-large" type="text" name="USERNAME" placeholder="Tên đăng nhập" value="<?php if ($_POST) echo trim($_POST["USERNAME"]) ?>">
                 </div>
               </div>
               <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                   <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                  <input class="uk-input uk-form-large" type="password" name="MATKHAU" placeholder="**********">
+                  <input class="uk-input uk-form-large" type="password" name="MATKHAU" placeholder="Mật khẩu">
                 </div>
               </div>
               <div class="uk-margin">

@@ -120,5 +120,9 @@ class Bandoc
 
         return $statement->execute();
     }
+
+    public static function getThisMonth() {
+        return Database::query("SELECT `MABANDOC` as 'Mã bạn đọc', `HOTEN` as 'Họ tên', `NGAYSINH` as 'Ngày sinh', `DIACHI` as 'Địa chỉ', `SDT` as 'Số điện thoại', `NGAYTHEM` as 'Ngày thêm' FROM `bandoc` WHERE NGAYTHEM >= LAST_DAY(CURDATE()) + INTERVAL 1 DAY - INTERVAL 1 MONTH AND NGAYTHEM <  LAST_DAY(CURDATE()) + INTERVAL 1 DAY");
+    }
 }
 

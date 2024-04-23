@@ -27,8 +27,8 @@ class TheloaiController
         ];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $genreData['MATHELOAI'] = $_POST['MATHELOAI'] ?? null;
-            $genreData['TEN'] = $_POST['TEN'];
+            $genreData['MATHELOAI'] = trim($_POST['MATHELOAI'] ?? null);
+            $genreData['TEN'] = trim($_POST['TEN']);
 
             $genre = new Theloai();
             $genre->load($genreData);
@@ -56,7 +56,7 @@ class TheloaiController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $genreData['TEN'] = $_POST['TEN'];
+            $genreData['TEN'] = trim($_POST['TEN'] ?? '');
 
             $genre = new Theloai();
             $genre->load($genreData);
@@ -69,7 +69,8 @@ class TheloaiController
         }
 
         $router->renderAdminPanel('admin/genres/sua', [
-            'genre' => $genreData
+            'genre' => $genreData,
+            'errors' => $errors
         ]);
     }
 

@@ -1,7 +1,7 @@
 <form method="POST" enctype="multipart/form-data">
   <fieldset class="uk-fieldset">
     <?php if ($book["ANHSACH"]) : ?>
-      <div class="noPrint">
+      <div class="noPrint" style="max-width:300px">
         <img src="<?php echo $book["ANHSACH"] ?>" alt="<?php echo $book["TENSACH"] ?>">
       </div>
     <?php endif; ?>

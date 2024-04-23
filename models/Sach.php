@@ -33,9 +33,14 @@ class Sach
     $this->ANHSACH = $data['ANHSACH'] ?? '';
   }
 
-  public function save()
+  public function save(string $flag = "create")
   {
     $errors = [];
+    if ($flag != "update") {
+      if (!$_FILES['imageFile']) {
+        $errors[] = 'Ảnh sách không được bỏ trống!';
+      }
+    }
     if (!$this->MATHELOAI) {
       $errors[] = 'Thể loại không được bỏ trống!';
     }
@@ -64,7 +69,13 @@ class Sach
       if ($this->imageFile && $this->imageFile['tmp_name'] && $this->imageFile['name']) {
 
         if ($this->ANHSACH) {
+          $pathArr = explode("/", $this->ANHSACH);
+          array_pop($pathArr);
+          $dirPath = implode("/", $pathArr);
+
+          //Delete the file then the folder
           unlink(__DIR__ . '/../src' . $this->ANHSACH);
+          rmdir(__DIR__ . '/../src' . $dirPath);
         }
 
         $this->ANHSACH = "/public/uploads/" . UltiHelper::randomString(8) . "/" . $this->imageFile['name'];
@@ -154,15 +165,27 @@ class Sach
     return Sach::inc($bookId);
   }
 
-  public static function getRelated(int $MATHEMUON) {
+  public static function getRelated(int $MATHEMUON)
+  {
     $statement = Database::$pdo->prepare("SELECT sach_themuontra.`MASACH`, sach_themuontra.`MATHEMUON`, sach_themuontra.`NGAYTHEM`, sach.MASACH, sach.TENSACH FROM `sach_themuontra` INNER JOIN sach ON sach.MASACH = sach_themuontra.MASACH WHERE sach_themuontra.MATHEMUON = ?");
     $statement->bind_param("i", $MATHEMUON);
     $statement->execute();
     return $statement->get_result();
   }
 
-  public static function delete(int $id): bool
+  public static function delete(int $id, string $imgPath): bool
   {
+    if ($imgPath) {
+      $pathArr = explode("/", $imgPath);
+      array_pop($pathArr);
+      $dirPath = implode("/", $pathArr);
+
+      //delete image file
+      unlink(__DIR__ . '/../src' . $imgPath);
+      //delete the folder
+      rmdir(__DIR__ . '/../src' . $dirPath);
+    }
+
     $statement = Database::$pdo->prepare("DELETE FROM sach WHERE MASACH = ?");
     $statement->bind_param("i", $id);
 
@@ -183,5 +206,20 @@ class Sach
     $statement->bind_param("ii", $ammount, $id);
 
     return $statement->execute();
+  }
+
+  public static function getBorrowedBooks()
+  {
+    return Database::query("SELECT themuontra.MATHEMUON AS 'Mã thẻ mượn', sach.MASACH as 'Mã sách', sach.TENSACH AS 'Tên sách', themuontra.NGAYMUON AS 'Ngày mượn', themuontra.NGAYTRA AS 'Ngày trả', bandoc.HOTEN AS 'Bạn đọc', bandoc.MABANDOC AS 'Mã bạn đọc', admin.USERNAME AS 'Thủ thư' FROM themuontra INNER JOIN sach_themuontra ON themuontra.MATHEMUON = sach_themuontra.MATHEMUON INNER JOIN sach ON sach.MASACH = sach_themuontra.MASACH INNER JOIN bandoc ON bandoc.MABANDOC = themuontra.MABANDOC INNER JOIN admin ON admin.MAADMIN = themuontra.MAADMIN WHERE themuontra.TINHTRANG = 'Chưa trả'");
+  }
+
+  public static function getExpiredBooks()
+  {
+    return Database::query("SELECT themuontra.MATHEMUON AS 'Mã thẻ mượn', sach.MASACH as 'MÃ sách', sach.TENSACH AS 'Tên sách', themuontra.NGAYMUON AS 'Ngày mượn', themuontra.NGAYTRA AS 'Ngày trả', bandoc.HOTEN AS 'Bạn đọc', bandoc.MABANDOC AS 'Mã bạn đọc', admin.USERNAME AS 'Thủ thư' FROM themuontra INNER JOIN sach_themuontra ON themuontra.MATHEMUON = sach_themuontra.MATHEMUON INNER JOIN sach ON sach.MASACH = sach_themuontra.MASACH INNER JOIN bandoc ON bandoc.MABANDOC = themuontra.MABANDOC INNER JOIN admin ON admin.MAADMIN = themuontra.MAADMIN WHERE themuontra.TINHTRANG = 'Quá hạn'");
+  }
+
+  public static function getThisMonth()
+  {
+    return Database::query("SELECT sach.MASACH AS 'Mã sách', sach.MATHELOAI AS 'Mã thể loại', sach.MATACGIA AS 'Mã tác giả', sach.`TENSACH` AS 'Tên sách', sach.`SOLUONG` AS 'Số lượng', sach.`VITRI` AS 'Vị trí', sach.`TOMTAT` AS 'Tóm tắt', sach.`ANHSACH` 'Ảnh sách', sach.`NGAYTHEM` AS 'Ngày thêm', sach.`NGAYCAPNHAT` AS 'Ngày cập nhật', tacgia.`BUTDANH` AS 'Tác giả', theloai.`TEN` AS 'Thể loại' FROM `sach` INNER JOIN tacgia on sach.MATACGIA = tacgia.MATACGIA INNER JOIN theloai on sach.MATHELOAI = theloai.MATHELOAI WHERE sach.NGAYTHEM >= LAST_DAY(CURDATE()) + INTERVAL 1 DAY - INTERVAL 1 MONTH AND sach.NGAYTHEM <  LAST_DAY(CURDATE()) + INTERVAL 1 DAY");
   }
 }

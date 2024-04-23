@@ -19,11 +19,7 @@ class Theloai
     public function save(string $flag = "create")
     {
         $errors = [];
-
-        // if (!$this->MATHELOAI) {
-        //   $errors[] = 'Mã TL không được bỏ trống!';
-        // }
-
+        
         if (!$this->TEN) {
             $errors[] = 'Tên không được bỏ trống!';
         }
@@ -82,7 +78,7 @@ class Theloai
             $statement->execute();
             return '';
         } catch (Exception $e) {
-            return 'Mã thẻ loại đã tồn tại!';
+            return 'Mã thể loại đã tồn tại!';
             // return $e->getMessage();
         }
     }

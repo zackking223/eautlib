@@ -42,14 +42,14 @@
         <div class="uk-margin">
             <label class="uk-form-label" for="NGAYMUON">Ngày mượn</label>
             <div class="uk-form-controls">
-                <input class="uk-input" name="NGAYMUON" type="date" value="<?php echo $card["NGAYMUON"] ?>">
+                <input class="uk-input" id="NGAYMUON" name="NGAYMUON" type="date" value="<?php echo $card["NGAYMUON"] ?>">
             </div>
         </div>
 
         <div class="uk-margin">
             <label class="uk-form-label" for="NGAYTRA">Ngày trả</label>
             <div class="uk-form-controls">
-                <input class="uk-input" name="NGAYTRA" type="date" value="<?php echo $card["NGAYTRA"] ?>">
+                <input class="uk-input" id="NGAYTRA" name="NGAYTRA" type="date" value="<?php echo $card["NGAYTRA"] ?>">
             </div>
         </div>
 

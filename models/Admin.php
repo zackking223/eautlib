@@ -18,7 +18,7 @@ class Admin
     $this->MAADMIN = (int)$data["MAADMIN"] ?? null;
     $this->MATKHAU = $data["MATKHAU"] ?? null;
     $this->ROLE = $data["ROLE"] ?? null;
-    $this->USERNAME = $data["USERNAME"] ?? null;
+    $this->USERNAME = trim($data["USERNAME"]) ?? null;
     $this->NGAYTHEM = $data["NGAYTHEM"] ?? null;
   }
 
@@ -34,7 +34,7 @@ class Admin
       $errors[] = "Vai trò không được bỏ trống!";
     }
 
-    if (!$this->USERNAME) {
+    if (!$this->USERNAME || trim($this->USERNAME) == "") {
       $errors[] = "Tên đăng nhập không được bỏ trống";
     }
 

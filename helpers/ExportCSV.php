@@ -6,7 +6,7 @@ use mysqli_result;
 
 class ExportCSV
 {
-  private function array2csv(mysqli_result &$data)
+  private function array2csv(mysqli_result &$data, string $title = "")
   {
     if ($data->num_rows == 0) {
       return null;
@@ -14,7 +14,16 @@ class ExportCSV
     ob_start();
     $df = fopen("php://output", 'w');
     fprintf($df, chr(0xEF) . chr(0xBB) . chr(0xBF));
+    
+    // Tên bảng
+    if ($title) {
+      fputcsv($df, [$title]);
+    }
+
+    // Tên cột
     fputcsv($df, array_keys($data->fetch_array(MYSQLI_ASSOC)));
+
+    // Các hàng thông tin
     foreach ($data as $row) {
       fputcsv($df, $row);
     }
@@ -44,6 +53,19 @@ class ExportCSV
   {
     $this->download_send_headers($filename . "_" . date("Y-m-d") . ".csv");
     echo $this->array2csv($data);
+    die();
+  }
+
+  /**
+   * @param mysqli_result[] $data
+   */
+  public function exportMany($data)
+  {
+    $this->download_send_headers("Thống kê" . "_" . date("Y-m-d") . ".csv");
+    foreach ($data as $key => $table) {
+      if ($table->num_rows > 0)
+        echo $this->array2csv($table, $key);
+    }
     die();
   }
 }

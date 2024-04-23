@@ -118,4 +118,8 @@ class Vipham
 
         return $statement->execute();
     }
+
+    public static function getThisMonth() {
+        return Database::query("SELECT vipham.MAVIPHAM as 'Mã vi phạm', vipham.NOIDUNG as 'Nội dung', vipham.NGAYTHEM as 'Ngày thêm', bandoc.HOTEN as 'Bạn đọc', bandoc.MABANDOC as 'Mã bạn đọc', admin.USERNAME as 'Thủ thư' FROM vipham INNER JOIN bandoc ON vipham.MABANDOC = bandoc.MABANDOC INNER JOIN admin ON admin.MAADMIN = vipham.MAADMIN WHERE vipham.NGAYTHEM >= LAST_DAY(CURDATE()) + INTERVAL 1 DAY - INTERVAL 1 MONTH AND vipham.NGAYTHEM <  LAST_DAY(CURDATE()) + INTERVAL 1 DAY");
+    }
 }

@@ -1,7 +1,9 @@
 <?php $headTitle = "Thống kê" ?>
 
 <div class="">
-
+  <center class="uk-margin">
+    <a href="/admin/analytics/download?target=all" target="_blank" class="uk-button uk-button-big uk-button-primary">Lưu tất cả<span uk-icon="download"></span></a>
+  </center>
   <div class="uk-flex" style="align-items: center;">
     <h3 class="uk-card-title" style="width: max-content; margin: auto; font-weight: bold">Số sách chưa trả</h3>
     <?php if ($data["SACHCHUATRA_ROWS"] === 0) : ?>
