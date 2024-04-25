@@ -39,7 +39,7 @@
               </div>
               <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                 <label><input class="uk-checkbox" type="checkbox" name="remember_password"> Ghi nhớ đăng nhập</label>
-                <a href="/" class="uk-button uk-button-danger uk-margin-auto-left uk-button-small"><span uk-icon="arrow-left"></span> Hủy</a>
+                <a id="return-btn" href="/" class="uk-button uk-button-danger uk-margin-auto-left uk-button-small"><span uk-icon="arrow-left"></span> Hủy</a>
               </div>
             </form>
           </div>

@@ -92,12 +92,12 @@ $total = 0 ?>
             <?php echo $book["NGAYCAPNHAT"] ?>
           </td>
           <td class="uk-flex">
-            <a class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/books/update?id=<?php echo $book["MASACH"] ?>">
+            <a id="<?php echo $book["MASACH"] . "update-btn" ?>" class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/books/update?id=<?php echo $book["MASACH"] ?>">
               <span uk-icon="file-edit"></span>
             </a>
             <form action="/admin/books/delete" method="post" onsubmit="return confirm('Bạn có chắc muốn xóa?')">
               <input type="hidden" name="MASACH" value="<?php echo $book["MASACH"] ?>">
-              <button type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
+              <button id="<?php echo $book["MASACH"] . "delete-btn" ?>" type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
             </form>
           </td>
         </tr>

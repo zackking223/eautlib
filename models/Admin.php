@@ -26,12 +26,14 @@ class Admin
   {
     $errors = [];
 
-    if (!$this->MATKHAU) {
-      $errors[] = "Mật khẩu không được bỏ trống!";
-    }
-
-    if (strlen($this->MATKHAU) < 8) {
-      $errors[] = "Mật khẩu tối thiểu 8 ký tự!";
+    if ($flag == "create") {
+      if (!$this->MATKHAU) {
+        $errors[] = "Mật khẩu không được bỏ trống!";
+      }
+  
+      if (strlen($this->MATKHAU) < 8) {
+        $errors[] = "Mật khẩu tối thiểu 8 ký tự!";
+      }
     }
 
     if (!$this->ROLE) {
@@ -43,7 +45,7 @@ class Admin
     }
 
     if (empty($errors)) {
-      if ($flag === 'create') {
+      if ($flag == 'create') {
         //Them
         $errorMsg = Admin::create($this);
         if ($errorMsg) {

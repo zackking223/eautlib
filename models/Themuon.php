@@ -48,7 +48,7 @@ class Themuon
       $errors[] = "Ngày trả không được bỏ trống";
     }
 
-    if ($this->NGAYMUON < date("Y-m-d")) {
+    if ($flag == "create" && $this->NGAYMUON < date("Y-m-d")) {
       $errors[] = "Ngày mượn phải lớn hơn hoặc bằng hôm nay";
     }
 

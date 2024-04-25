@@ -72,14 +72,14 @@ $roles = [
             <hr>
 
             <ul class="uk-list uk-list-divider">
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: album"></span><a href="/admin/books/">Sách</a></li>
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: code"></span><a href="/admin/genres/">Thể loại</a></li>
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: users"></span><a href="/admin/authors/">Tác giả</a></li>
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: happy"></span><a href="/admin/readers/">Bạn đọc</a></li>
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: ban"></span><a href="/admin/violations/">Vi phạm</a></li>
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: forward"></span><a href="/admin/borrows">Mượn trả</a></li>
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: lock"></span><a href="/admin/accounts">Tài khoản</a></li>
-              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: thumbnails"></span><a href="/admin/analytics">Thống kê</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: album"></span><a id="sach-link-sidebar" href="/admin/books/">Sách</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: code"></span><a id="theloai-link-sidebar" href="/admin/genres/">Thể loại</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: users"></span><a id="tacgia-link-sidebar" href="/admin/authors/">Tác giả</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: happy"></span><a id="bandoc-link-sidebar" href="/admin/readers/">Bạn đọc</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: ban"></span><a id="vipham-link-sidebar" href="/admin/violations/">Vi phạm</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: forward"></span><a id="muontra-link-sidebar" href="/admin/borrows">Mượn trả</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: lock"></span><a id="account-link-sidebar" href="/admin/accounts">Tài khoản</a></li>
+              <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: thumbnails"></span><a id="thongke-link-sidebar" href="/admin/analytics">Thống kê</a></li>
             </ul>
           </div>
         </div>
@@ -90,14 +90,14 @@ $roles = [
   </div>
   <div class="uk-flex">
     <ul class="uk-list uk-padding-small uk-margin-small-top uk-list-divider uk-text-bold uk-width-1-6@l uk-visible@l">
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: album"></span><a href="/admin/books/">Sách</a></li>
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: code"></span><a href="/admin/genres/">Thể loại</a></li>
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: users"></span><a href="/admin/authors/">Tác giả</a></li>
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: happy"></span><a href="/admin/readers/">Bạn đọc</a></li>
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: ban"></span><a href="/admin/violations/">Vi phạm</a></li>
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: forward"></span><a href="/admin/borrows">Mượn trả</a></li>
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: lock"></span><a href="/admin/accounts">Tài khoản</a></li>
-      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: thumbnails"></span><a href="/admin/analytics">Thống kê</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: album"></span><a id="sach-link-dashboard" href="/admin/books/">Sách</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: code"></span><a id="theloai-link-dashboard" href="/admin/genres/">Thể loại</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: users"></span><a id="tacgia-link-dashboard" href="/admin/authors/">Tác giả</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: happy"></span><a id="bandoc-link-dashboard" href="/admin/readers/">Bạn đọc</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: ban"></span><a id="vipham-link-dashboard" href="/admin/violations/">Vi phạm</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: forward"></span><a id="muontra-link-dashboard" href="/admin/borrows">Mượn trả</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: lock"></span><a id="taikhoan-link-dashboard" href="/admin/accounts">Tài khoản</a></li>
+      <li style="display: flex; align-items: center; gap: 6px"><span uk-icon="icon: thumbnails"></span><a id="thongke-link-dashboard" href="/admin/analytics">Thống kê</a></li>
     </ul>
     <div class="uk-padding-small uk-width-expand">
       <?php echo $content ?>

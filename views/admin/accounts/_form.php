@@ -1,6 +1,6 @@
 <form method="POST" enctype="multipart/form-data">
   <fieldset class="uk-fieldset">
-
+    <input type="hidden" id="MAADMIN" name="MAADMIN" value="<?php echo $account["MAADMIN"] ?>">
     <div class="uk-margin">
       <label class="uk-form-label" for="USERNAME">Username</label>
       <div class="uk-form-controls">
@@ -20,16 +20,27 @@
     <div class="uk-margin">
       <label class="uk-form-label" for="ROLE">Chức vụ</label>
       <div class="uk-form-controls">
-        <select class="uk-select" name="ROLE" value="THU_THU">
-          <option value="THU_THU">Thủ thư</option>
-          <option value="QUAN_TRI">Quản trị viên</option>
+        <select class="uk-select" name="ROLE" value="<?php echo $account["ROLE"] ?>">
+          <?php
+            function getRole($role) : string {
+              if ($role == "THU_THU") return "Thủ thư";
+              if ($role == "QUAN_TRI") return "Quản trị viên";
+            }
+          ?>
+          <?php foreach (array("THU_THU", "QUAN_TRI") as $role) : ?>
+            <?php if ($account["ROLE"] == $role) : ?>
+              <option value="<?php echo $role; ?>" selected><?php echo getRole($role); ?></option>
+            <?php else : ?>
+              <option value="<?php echo $role; ?>"><?php echo getRole($role); ?></option>
+            <?php endif; ?>
+          <?php endforeach; ?>
         </select>
       </div>
     </div>
 
     <div class="uk-margin">
-      <input class="uk-button uk-button-primary" type="submit" value="<?php echo $headTitle ?>">
-      <a class="uk-button uk-button-danger" href="/admin/accounts">Quay lại</a>
+      <input id="xacnhan-btn" class="uk-button uk-button-primary" type="submit" value="<?php echo $headTitle ?>">
+      <a id="return-btn" class="uk-button uk-button-danger" href="/admin/accounts">Quay lại</a>
     </div>
   </fieldset>
 </form>

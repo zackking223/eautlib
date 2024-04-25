@@ -86,12 +86,12 @@
                         <?php echo $card["NGAYTHEM"] ?>
                     </td>
                     <td class="uk-flex">
-                        <a class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/borrows/update?id=<?php echo $card["MATHEMUON"] ?>">
+                        <a id="<?php echo $card["MATHEMUON"] . "update-btn" ?>"  class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/borrows/update?id=<?php echo $card["MATHEMUON"] ?>">
                             <span uk-icon="file-edit"></span>
                         </a>
                         <form action="/admin/borrows/delete" method="post" onsubmit="return confirm('Bạn có chắc muốn xóa?')">
                             <input type="hidden" name="MATHEMUON" value="<?php echo $card["MATHEMUON"] ?>">
-                            <button type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
+                            <button id="<?php echo $card["MATHEMUON"] . "delete-btn" ?>" type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
                         </form>
                     </td>
                 </tr>

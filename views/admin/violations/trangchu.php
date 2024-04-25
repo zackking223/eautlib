@@ -45,12 +45,12 @@
                         <?php echo $violation["NGAYTHEM"] ?>
                     </td>
                     <td class="uk-flex">
-                        <a class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/violations/update?id=<?php echo $violation["MAVIPHAM"] ?>">
+                        <a id="<?php echo $violation["MAVIPHAM"] . "update-btn"?>" class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/violations/update?id=<?php echo $violation["MAVIPHAM"] ?>">
                             <span uk-icon="file-edit"></span>
                         </a>
                         <form action="/admin/violations/delete" method="post" onsubmit="return confirm('Bạn có chắc muốn xóa?')">
                             <input type="hidden" name="MAVIPHAM" value="<?php echo $violation["MAVIPHAM"] ?>">
-                            <button type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
+                            <button id="<?php echo $violation["MAVIPHAM"] . "delete-btn"?>" type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
                         </form>
                     </td>
                 </tr>

@@ -86,9 +86,9 @@
         </form>
 
         <?php if (isset($_SESSION["auth"])) : ?>
-          <a class="uk-button uk-button-default uk-visible@l" href="/auth/logout">Đăng xuất</a>
+          <a id="logout-btn" class="uk-button uk-button-default uk-visible@l" href="/auth/logout">Đăng xuất</a>
         <?php else : ?>
-          <a class="uk-button uk-button-default uk-visible@l" href="/auth/login">Đăng nhập</a>
+          <a id="login-btn" class="uk-button uk-button-default uk-visible@l" href="/auth/login">Đăng nhập</a>
         <?php endif; ?>
 
         <button id="sidebar-btn" class="uk-button uk-text-primary uk-text-bold uk-hidden@l uk-padding-remove noPrint" type="button" uk-toggle="target: #offcanvas-overlay" uk-icon="icon: menu; ratio: 1.2"></button>
@@ -100,9 +100,9 @@
             <button class="uk-offcanvas-close uk-padding uk-text-primary" type="button" uk-close></button>
 
             <?php if (isset($_SESSION["auth"])) : ?>
-              <a class="uk-button uk-button-default" href="/auth/logout">Đăng xuất</a>
+              <a id="logout-btn-sidebar" class="uk-button uk-button-default" href="/auth/logout">Đăng xuất</a>
             <?php else : ?>
-              <a class="uk-button uk-button-default" href="/auth/login">Đăng nhập</a>
+              <a id="login-btn-sidebar" class="uk-button uk-button-default" href="/auth/login">Đăng nhập</a>
             <?php endif; ?>
 
             <hr>
@@ -171,8 +171,8 @@
               </li>
               <?php if (isset($_SESSION["auth"])) : ?>
                 <li>
-                  <a class="uk-button uk-button-small uk-button-secondary uk-hidden@l" href="/admin">Quản trị</a>
-                  <a class="uk-button uk-button-small uk-button-secondary uk-hidden@l" href="/admin/borrows">Mượn trả</a>
+                  <a id="quantri-btn-sidebar" class="uk-button uk-button-small uk-button-secondary uk-hidden@l" href="/admin">Quản trị</a>
+                  <a id="muontra-btn-sidebar" class="uk-button uk-button-small uk-button-secondary uk-hidden@l" href="/admin/borrows">Mượn trả</a>
                 </li>
               <?php endif; ?>
             </ul>

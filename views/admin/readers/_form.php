@@ -34,8 +34,8 @@
         </div>
 
         <div class="uk-margin noPrint">
-            <input class="uk-button uk-button-primary" type="submit" value="<?php echo $headTitle ?>">
-            <a class="uk-button uk-button-danger" href="/admin/readers">Quay lại</a>
+            <input id="xacnhan-btn" class="uk-button uk-button-primary" type="submit" value="<?php echo $headTitle ?>">
+            <a id="return-btn" class="uk-button uk-button-danger" href="/admin/readers">Quay lại</a>
         </div>
     </fieldset>
 </form>

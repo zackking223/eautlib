@@ -82,7 +82,7 @@ class AccountController
         $accountData['MATKHAU'] = $_POST['MATKHAU'] ?? '';
         $accountData['ROLE'] = $_POST['ROLE'] ?? '';
         $accountData['USERNAME'] = $_POST['USERNAME'] ?? '';
-
+        
         $account = new Admin();
         $account->load($accountData);
         $errors = $account->save('update');

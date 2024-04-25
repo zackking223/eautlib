@@ -43,12 +43,12 @@
                         <?php echo $reader["NGAYTHEM"] ?>
                     </td>
                     <td class="uk-flex">
-                        <a class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/readers/update?id=<?php echo $reader["MABANDOC"] ?>">
+                        <a id="<?php echo $reader["MABANDOC"] . "update-btn"?>" class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right" href="/admin/readers/update?id=<?php echo $reader["MABANDOC"] ?>">
                             <span uk-icon="file-edit"></span>
                         </a>
                         <form action="/admin/readers/delete" method="post" onsubmit="return confirm('Bạn có chắc muốn xóa?')">
                             <input type="hidden" name="MABANDOC" value="<?php echo $reader["MABANDOC"] ?>">
-                            <button type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
+                            <button id="<?php echo $reader["MABANDOC"] . "delete-btn"?>" type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span uk-icon="trash"></span></button>
                         </form>
                     </td>
                 </tr>

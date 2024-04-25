@@ -32,13 +32,14 @@
                         <?php echo $author["NGAYTHEM"] ?>
                     </td>
                     <td class="uk-flex">
-                        <a class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right"
+                        <a id="<?php echo $author["MATACGIA"] . "update-btn" ?>" class="uk-button uk-button-small uk-button-primary uk-padding-remove uk-margin-small-right"
                             href="/admin/authors/update?id=<?php echo $author["MATACGIA"] ?>">
                             <span uk-icon="file-edit"></span>
                         </a>
                         <form action="/admin/authors/delete" method="post" onsubmit="return confirm('Bạn có chắc muốn xóa?')">
                             <input type="hidden" name="MATACGIA" value="<?php echo $author["MATACGIA"] ?>">
-                            <button type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span
+                            <button id="<?php echo $author["MATACGIA"] . "delete-btn" ?>"
+                                    type="submit" class="uk-button uk-button-small uk-button-danger uk-padding-remove"><span
                                     uk-icon="trash"></span></button>
                         </form>
                     </td>
