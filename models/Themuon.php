@@ -48,6 +48,10 @@ class Themuon
       $errors[] = "Ngày trả không được bỏ trống";
     }
 
+    if ($this->NGAYMUON < date("Y-m-d")) {
+      $errors[] = "Ngày mượn phải lớn hơn hoặc bằng hôm nay";
+    }
+
     if (strtotime($this->NGAYTRA) <= strtotime($this->NGAYMUON)) {
       $errors[] = "Ngày mượn không được lớn hơn hoặc bằng ngày trả";
     }

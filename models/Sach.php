@@ -36,11 +36,11 @@ class Sach
   public function save(string $flag = "create")
   {
     $errors = [];
-    if ($flag != "update") {
-      if (!$_FILES['imageFile']) {
+    //$_FILES['imageFile']
+    if ($flag == "create" && ($_FILES['imageFile']['error'] == 4 || ($_FILES['imageFile']['size'] == 0 && $_FILES['imageFile']['error'] == 0))) {
         $errors[] = 'Ảnh sách không được bỏ trống!';
-      }
     }
+
     if (!$this->MATHELOAI) {
       $errors[] = 'Thể loại không được bỏ trống!';
     }

@@ -95,7 +95,7 @@ class Admin
       $statement->execute();
       return '';
     } catch (Exception $e) {
-      return 'Mã admin đã tồn tại!';
+      return 'Tên đăng nhập đã tồn tại!';
     }
   }
 

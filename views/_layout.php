@@ -81,8 +81,8 @@
         </section>
 
         <form class="uk-search uk-search-default uk-visible@l">
-          <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-          <input class="uk-search-input" type="search" name="name" placeholder="Tìm kiếm sách" aria-label="Search" value="<?php if ($search["name"]) echo $search["name"] ?>">
+          <button id="search-btn" class="uk-search-icon-flip" uk-search-icon></button>
+          <input id="search" class="uk-search-input" type="search" name="name" placeholder="Tìm kiếm sách" aria-label="Search" value="<?php if ($search["name"]) echo $search["name"] ?>">
         </form>
 
         <?php if (isset($_SESSION["auth"])) : ?>
@@ -91,7 +91,7 @@
           <a class="uk-button uk-button-default uk-visible@l" href="/auth/login">Đăng nhập</a>
         <?php endif; ?>
 
-        <button class="uk-button uk-text-primary uk-text-bold uk-hidden@l uk-padding-remove noPrint" type="button" uk-toggle="target: #offcanvas-overlay" uk-icon="icon: menu; ratio: 1.2"></button>
+        <button id="sidebar-btn" class="uk-button uk-text-primary uk-text-bold uk-hidden@l uk-padding-remove noPrint" type="button" uk-toggle="target: #offcanvas-overlay" uk-icon="icon: menu; ratio: 1.2"></button>
 
         <!-- SIDEBAR -->
         <div class="uk-hidden@l" id="offcanvas-overlay" uk-offcanvas="overlay: true; flip: true">
@@ -107,10 +107,9 @@
 
             <hr>
 
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
             <form class="uk-search uk-search-navbar uk-hidden@l">
-              <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-              <input class="uk-search-input" type="search" name="name" placeholder="Tìm kiếm sách" aria-label="Search" value="<?php if ($search["name"]) echo $search["name"] ?>">
+              <button id="search-btn-sidebar" class="uk-search-icon-flip" uk-search-icon></button>
+              <input id="search-sidebar" class="uk-search-input" type="search" name="name" placeholder="Tìm kiếm sách" aria-label="Search" value="<?php if ($search["name"]) echo $search["name"] ?>">
             </form>
 
             <hr>

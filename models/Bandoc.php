@@ -32,7 +32,7 @@ class Bandoc
         // }
 
         if (!$this->HOTEN) {
-            $errors[] = 'Họ tên không được bỏ trống!';
+            $errors[] = 'Tên bạn đọc không được bỏ trống!';
         }
 
         if (!$this->NGAYSINH) {

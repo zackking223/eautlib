@@ -26,16 +26,8 @@ class Vipham
     {
         $errors = [];
 
-        // if (!$this->MAVIPHAM) {
-        //   $errors[] = 'Mã VP không được bỏ trống!';
-        // }
-
         if (!$this->NOIDUNG) {
             $errors[] = 'Nội dung không được bỏ trống!';
-        }
-
-        if (!$this->NGAYTHEM) {
-            $errors[] = 'Ngày thêm không được bỏ trống';
         }
 
         if (empty($errors)) {

@@ -13,3 +13,6 @@
 ### Khởi chạy Server:
 - cd /src/
 - php -S localhost:8000
+
+### Chạy test:
+.\vendor\bin\phpunit .\tests\TestName.php
