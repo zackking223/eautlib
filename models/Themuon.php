@@ -64,6 +64,10 @@ class Themuon
       $errors[] = "Phải thêm sách muốn mượn";
     }
 
+    if (!Vipham::isGood($this->MABANDOC)) {
+      $errors[] = "Bạn đọc vi phạm quá nhiều!";
+    }
+
     if (empty($errors)) {
       if ($flag === 'create') {
         $errorMsg = Themuon::create($this);

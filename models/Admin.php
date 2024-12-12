@@ -4,6 +4,7 @@ namespace myapp\models;
 
 use Exception;
 use myapp\database\Database;
+use myapp\helpers\PasswordHelper;
 
 class Admin
 {
@@ -25,14 +26,19 @@ class Admin
   public function save(string $flag = "create")
   {
     $errors = [];
+    $helper = new PasswordHelper();
 
     if ($flag == "create") {
       if (!$this->MATKHAU) {
         $errors[] = "Mật khẩu không được bỏ trống!";
       }
   
-      if (strlen($this->MATKHAU) < 8) {
+      if (!$helper->CheckMinLength($this->MATKHAU, 8)) {
         $errors[] = "Mật khẩu tối thiểu 8 ký tự!";
+      }
+
+      if (!$helper->HasUpperChar($this->MATKHAU)) {
+        $errors[] = "Mật khẩu phải có ký tự đặc biệt!";
       }
     }
 
@@ -89,7 +95,8 @@ class Admin
 
   public static function create(Admin $admin): string
   {
-    $hashedPassword = Admin::hashPassword($admin->MATKHAU);
+    $hasher = new PasswordHelper();
+    $hashedPassword = $hasher->HashARGON2ID($admin->MATKHAU);
     $statement = Database::$pdo->prepare("INSERT INTO admin(MAADMIN, MATKHAU, ROLE, USERNAME) VALUES (?, ?, ?, ?)");
     $statement->bind_param("isss", $admin->MAADMIN, $hashedPassword, $admin->ROLE, $admin->USERNAME);
 
@@ -114,14 +121,10 @@ class Admin
     }
   }
 
-  public static function hashPassword(string $str)
-  {
-    return password_hash($str, PASSWORD_ARGON2ID);
-  }
-
   public function verify()
   {
     $errors = [];
+    $helper = new PasswordHelper();
 
     if (!$this->MATKHAU) {
       $errors[] = "Mật khẩu không được bỏ trống";
@@ -131,14 +134,18 @@ class Admin
       $errors[] = "Tên đăng nhập không được bỏ trống";
     }
 
+    if (!$helper->CheckMinLength($this->MATKHAU, 8)) {
+      $errors[] = "Mật khẩu phải tối thiểu 8 ký tự";
+    }
+
     if (empty($errors)) {
       $statement = Database::$pdo->prepare("SELECT `MAADMIN`, `MATKHAU`, `ROLE`, `USERNAME`, `NGAYTHEM` FROM admin WHERE USERNAME=?");
       $statement->bind_param("s", $this->USERNAME);
       $statement->execute();
 
       $result = $statement->get_result()->fetch_array(MYSQLI_ASSOC);
-
-      if (password_verify($this->MATKHAU, $result["MATKHAU"])) {
+      
+      if ($helper->ValidateARGON2ID($this->MATKHAU, $result["MATKHAU"])) {
         $_SESSION['auth'] = true;
         $_SESSION['username'] = $result['USERNAME'];
         $_SESSION['role'] = $result['ROLE'];
@@ -152,7 +159,8 @@ class Admin
 
   public static function changePass(string $username, string $newPass): string
   {
-    $hashedPassword = Admin::hashPassword($newPass);
+    $helper = new PasswordHelper();
+    $hashedPassword = $helper->HashARGON2ID($newPass);
     $statement = Database::$pdo->prepare("UPDATE admin SET MATKHAU = ? WHERE USERNAME = ?");
     $statement->bind_param("si", $hashedPassword, $username);
     $statement->execute();

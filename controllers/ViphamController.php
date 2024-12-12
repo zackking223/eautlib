@@ -41,13 +41,12 @@ class ViphamController
             $violationData['MABANDOC'] = $_POST['MABANDOC'] ?? null;
             $violationData['MAADMIN'] = $_POST['MAADMIN'] ?? null;
             $violationData['NOIDUNG'] = $_POST['NOIDUNG'];
-            $violationData['NGAYTHEM'] = $_POST['NGAYTHEM'];
 
             $violation = new Vipham();
             $violation->load($violationData);
             $errors = $violation->save();
             if (empty($errors)) {
-                header("location: /violations");
+                header("location: /admin/violations");
                 exit;
             }
         }
@@ -67,7 +66,7 @@ class ViphamController
     {
         $MAVIPHAM = $_GET['id'] ?? null;
         if (!$MAVIPHAM) {
-            header('location: /violations');
+            header('location: /admin/violations');
             exit;
         }
         $violationData = Vipham::getById($MAVIPHAM);
@@ -75,14 +74,15 @@ class ViphamController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $violationData['NOIDUNG'] = $_POST['NOIDUNG'];
-            $violationData['NGAYTHEM'] = $_POST['NGAYTHEM'];
+            $violationData['MAADMIN'] = $_POST['MAADMIN'];
+            $violationData['MABANDOC'] = $_POST['MABANDOC'];
 
             $violation = new Vipham();
             $violation->load($violationData);
             $errors = $violation->save('update');
 
             if (empty($errors)) {
-                header('location: /violations');
+                header('location: /admin/violations');
                 exit;
             }
         }

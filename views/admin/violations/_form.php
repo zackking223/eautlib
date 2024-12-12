@@ -4,8 +4,7 @@
         <div class="uk-margin">
             <label class="uk-form-label" for="NOIDUNG">Nội dung</label>
             <div class="uk-form-controls">
-                <input class="uk-input" name="NOIDUNG" type="text" placeholder="Nhập nội dung"
-                    value="<?php echo $violation["NOIDUNG"] ?>">
+                <input class="uk-input" name="NOIDUNG" type="text" placeholder="Nhập nội dung" value="<?php echo $violation["NOIDUNG"] ?>">
             </div>
         </div>
 
@@ -13,10 +12,16 @@
             <label class="uk-form-label" for="MABANDOC">Bạn đọc</label>
             <div class="uk-form-controls">
                 <select class="uk-select" name="MABANDOC" value="<?php echo $violation["MABANDOC"] ?>">
-                    <?php foreach ($readers as $reader): ?>
-                        <option value="<?php echo $reader["MABANDOC"] ?>">
-                            <?php echo $reader["HOTEN"] ?>
-                        </option>
+                    <?php foreach ($readers as $reader) : ?>
+                        <?php if ($violation["MABANDOC"] == $reader["MABANDOC"]) : ?>
+                            <option value="<?php echo $reader["MABANDOC"] ?>" selected>
+                                <?php echo $reader["HOTEN"] ?>
+                            </option>
+                        <?php else : ?>
+                            <option value="<?php echo $reader["MABANDOC"] ?>">
+                                <?php echo $reader["HOTEN"] ?>
+                            </option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -26,10 +31,16 @@
             <label class="uk-form-label" for="MAADMIN">Thủ thư</label>
             <div class="uk-form-controls">
                 <select class="uk-select" name="MAADMIN" value="<?php echo $violation["MAADMIN"] ?>">
-                    <?php foreach ($admins as $admin): ?>
-                        <option value="<?php echo $admin["MAADMIN"] ?>">
-                            <?php echo $admin["USERNAME"] ?>
-                        </option>
+                    <?php foreach ($admins as $admin) : ?>
+                        <?php if ($violation["MAADMIN"] == $admin["MAADMIN"]) : ?>
+                            <option value="<?php echo $admin["MAADMIN"] ?>" selected>
+                                <?php echo $admin["USERNAME"] ?>
+                            </option>
+                        <?php else : ?>
+                            <option value="<?php echo $admin["MAADMIN"] ?>">
+                                <?php echo $admin["USERNAME"] ?>
+                            </option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
             </div>

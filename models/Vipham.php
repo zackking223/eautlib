@@ -16,8 +16,8 @@ class Vipham
     public function load($data)
     {
         $this->MAVIPHAM = (int) $data["MAVIPHAM"] ?? null;
-        $this->MAVIPHAM = (int) $data["MABANDOC"] ?? null;
-        $this->MAVIPHAM = (int) $data["MAADMIN"] ?? null;
+        $this->MABANDOC = (int) $data["MABANDOC"] ?? null;
+        $this->MAADMIN = (int) $data["MAADMIN"] ?? null;
         $this->NOIDUNG = $data["NOIDUNG"] ?? '';
         $this->NGAYTHEM = $data["NGAYTHEM"] ?? '';
     }
@@ -57,7 +57,7 @@ class Vipham
         $noidungSearch = "%" . $search["noidung"] . "%";
         $hotenSearch = "%" . $search["hoten"] . "%";
         $usernameSearch = "%" . $search["username"] . "%";
-        $statement = Database::$pdo->prepare("SELECT vipham.`MAVIPHAM`, vipham.`NOIDUNG`, vipham.`NGAYTHEM`, bandoc.MABANDOC, admin.USERNAME, bandoc.HOTEN FROM `vipham` INNER JOIN admin ON vipham.MAADMIN = admin.MAADMIN INNER JOIN bandoc ON vipham.MABANDOC = bandoc.MABANDOC WHERE vipham.NOIDUNG LIKE ? AND admin.USERNAME LIKE ? AND bandoc.HOTEN LIKE ?");
+        $statement = Database::$pdo->prepare("SELECT vipham.`MAVIPHAM`, vipham.`NOIDUNG`, admin.`MAADMIN`, vipham.`NGAYTHEM`, bandoc.MABANDOC, admin.USERNAME, bandoc.HOTEN FROM `vipham` INNER JOIN admin ON vipham.MAADMIN = admin.MAADMIN INNER JOIN bandoc ON vipham.MABANDOC = bandoc.MABANDOC WHERE vipham.NOIDUNG LIKE ? AND admin.USERNAME LIKE ? AND bandoc.HOTEN LIKE ?");
         $statement->bind_param("sss", $noidungSearch, $usernameSearch, $hotenSearch);
 
         $statement->execute();
@@ -67,7 +67,7 @@ class Vipham
 
     public static function getById(int $id)
     {
-        $statement = Database::$pdo->prepare("SELECT vipham.`MAVIPHAM`, vipham.`NOIDUNG`, vipham.`NGAYTHEM`, bandoc.MABANDOC, admin.USERNAME, bandoc.HOTEN FROM `vipham` INNER JOIN admin ON vipham.MAADMIN = admin.MAADMIN INNER JOIN bandoc ON vipham.MABANDOC = bandoc.MABANDOC WHERE vipham.MAVIPHAM=?");
+        $statement = Database::$pdo->prepare("SELECT vipham.`MAVIPHAM`, vipham.`NOIDUNG`, admin.`MAADMIN`, vipham.`NGAYTHEM`, bandoc.MABANDOC, admin.USERNAME, bandoc.HOTEN FROM `vipham` INNER JOIN admin ON vipham.MAADMIN = admin.MAADMIN INNER JOIN bandoc ON vipham.MABANDOC = bandoc.MABANDOC WHERE vipham.MAVIPHAM=?");
         $statement->bind_param("i", $id);
 
         $statement->execute();
@@ -76,10 +76,23 @@ class Vipham
         return $statement->get_result()->fetch_array(MYSQLI_ASSOC);
     }
 
+    public static function isGood(int $id) : bool
+    {
+        $statement = Database::$pdo->prepare("SELECT COUNT(*) AS `SOLANVIPHAM` FROM vipham WHERE MABANDOC = ?;");
+        $statement->bind_param("i", $id);
+
+        $statement->execute();
+
+        //Tra ve du lieu vi pham
+        $resultArr = $statement->get_result()->fetch_array(MYSQLI_ASSOC);
+
+        return $resultArr["SOLANVIPHAM"] < 2;
+    }
+
     public static function create(Vipham $vipham): string
     {
-        $statement = Database::$pdo->prepare("INSERT INTO vipham(MAVIPHAM, MABANDOC, MAADMIN, NOIDUNG) VALUES (?, ?, ?, ?)");
-        $statement->bind_param("iiis", $vipham->MAVIPHAM, $vipham->MABANDOC, $vipham->MAADMIN, $vipham->NOIDUNG);
+        $statement = Database::$pdo->prepare("INSERT INTO vipham(MABANDOC, MAADMIN, NOIDUNG) VALUES (?, ?, ?)");
+        $statement->bind_param("iis", $vipham->MABANDOC, $vipham->MAADMIN, $vipham->NOIDUNG);
 
         try {
             $statement->execute();
@@ -92,8 +105,8 @@ class Vipham
 
     public static function update(Vipham $vipham): string
     {
-        $statement = Database::$pdo->prepare("UPDATE vipham SET NOIDUNG = ? WHERE MAVIPHAM = ?, MABANDOC = ?, MAADMIN = ?");
-        $statement->bind_param("siii", $vipham->NOIDUNG, $vipham->MAVIPHAM, $vipham->MABANDOC, $vipham->MAADMIN);
+        $statement = Database::$pdo->prepare("UPDATE vipham SET NOIDUNG = ? , MABANDOC = ? , MAADMIN = ? WHERE MAVIPHAM = ?");
+        $statement->bind_param("siii", $vipham->NOIDUNG, $vipham->MABANDOC, $vipham->MAADMIN, $vipham->MAVIPHAM);
         $statement->execute();
         try {
             $statement->execute();
@@ -111,7 +124,8 @@ class Vipham
         return $statement->execute();
     }
 
-    public static function getThisMonth() {
+    public static function getThisMonth()
+    {
         return Database::query("SELECT vipham.MAVIPHAM as 'Mã vi phạm', vipham.NOIDUNG as 'Nội dung', vipham.NGAYTHEM as 'Ngày thêm', bandoc.HOTEN as 'Bạn đọc', bandoc.MABANDOC as 'Mã bạn đọc', admin.USERNAME as 'Thủ thư' FROM vipham INNER JOIN bandoc ON vipham.MABANDOC = bandoc.MABANDOC INNER JOIN admin ON admin.MAADMIN = vipham.MAADMIN WHERE vipham.NGAYTHEM >= LAST_DAY(CURDATE()) + INTERVAL 1 DAY - INTERVAL 1 MONTH AND vipham.NGAYTHEM <  LAST_DAY(CURDATE()) + INTERVAL 1 DAY");
     }
 }
